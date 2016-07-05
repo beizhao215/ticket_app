@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    </head>
+    <body>
+        <div id="mapid">
+        </div>
+
+<p>
+  <p type="text" size="5" name="a"> <br>
+  <p type="text" size="5" name="b"> <br>
+        <p type="text" size="5" name="c">
+
+  <p id="result">?</p>
+<p><a href=# id="calculate">Will I receive ticket?</a>
+
+    </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src="{{ url_for('static', filename='ticketapp.js') }}"></script>
+        <script type="text/javascript">
+            var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        </script>
+{% block body %}{% endblock %}
+
+</html>
