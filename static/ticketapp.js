@@ -6,17 +6,13 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/beizhao215.0hn6ncjj/{z}/{x}/{y}.png
     accessToken: 'pk.eyJ1IjoiYmVpemhhbzIxNSIsImEiOiJjaXExcXphNzMwMDI2ZnhtNHBweXYyeWxwIn0.FSltIXJBKGARuo07o0xlgQ'
 }).addTo(mymap);
 
-//var popup = L.popup();
-//function onMapClick(e) {
-//    popup
-//        .setLatLng(e.latlng)
-//        .setContent("You clicked the map at " + e.latlng.toString())
-//        .openOn(mymap);
-//}
 
+
+mymap.on('click', onMapClick);
 var lat
 var lng
 var currentdate = new Date();
+var popup = L.popup();
 
 function onMapClick(e) {
     var latlon = e.latlng;
@@ -24,11 +20,18 @@ function onMapClick(e) {
     lng = latlon.lng;
     currenttime = currentdate.getHours() + ":" + currentdate.getMinutes()
     var a = $("#data").text(lat);
-    $('p[name=a]').text(lat);
-    $('p[name=b]').text(lng);
-    $('p[name=c]').text(currenttime);
+    $('p[name=a]').text("Latitude: "+lat);
+    $('p[name=b]').text("Longitude: "+lng);
+    $('p[name=c]').text("Time: "+currenttime);
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(mymap);
 
 }
+
+
+
 
 
 mymap.on('click', onMapClick);
@@ -40,7 +43,16 @@ $(function() {
         a: lat,
         b: lng
       }, function(data) {
-        $('#result').text(data.result);
+//        $('#result').text(data.result);
+        $('#result1').text(data.result[0]);
+
+        $('#result2').text(data.result[1]);
+        $('#result3').text(data.result[3]);
+        $('#result4').text(data.result[4]);
+        $('#result5').text(data.result[6]);
+        $('#result6').text(data.result[7]);
+
+
         $('input[name=a]').focus().select();
       });
       return false;

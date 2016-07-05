@@ -4,6 +4,7 @@ import geohash
 import mzgeohash
 from datetime import datetime
 from time import strftime
+import json
 
 app = Flask(__name__, template_folder=".", static_url_path='/static')
 
@@ -30,7 +31,7 @@ def add_numbers():
     ghash = geohash.encode(float(lat), float(lon), precision=9)
 
     # connection = get_db()
-    connection = happybase.Connection('54.165.137.212')
+    connection = happybase.Connection('54.172.243.191')
     table = connection.table('ticket')
     precision_9 = ghash  ## 2 meters
     precision_8 = ghash[:-1]  ## 20 meters
@@ -146,9 +147,16 @@ def add_numbers():
     #             counter6_time3h += 1
     #         elif 3600 < diff < 5400:
     #             counter6_time3h += 1
-    result_list = [counter7,counter8,counter9, counter7_time1h, counter8_time1h, counter9_time1h,
+
+    #result_dict = {'counter7' : counter7, 'counter8' : counter8}
+    result_dict = [counter7, counter8, counter9, counter7_time1h, counter8_time1h, counter9_time1h,
                    counter7_time2h, counter8_time2h, counter9_time2h, counter7_time3h, counter8_time3h, counter9_time3h]
-    return jsonify(result=result_list)
+    avg7 = 16.76
+    avg8 = 5.36
+    avg9 = 4
+    result = [counter7/avg7, counter8/avg8, counter9/avg9, counter7_time1h, counter8_time1h, counter9_time1h,
+                   counter7_time2h, counter8_time2h, counter9_time2h, counter7_time3h, counter8_time3h, counter9_time3h]
+    return jsonify(result=result)
 
 @app.teardown_appcontext
 def teardown_db(exception):
