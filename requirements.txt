@@ -1,0 +1,11 @@
+click==6.6
+Flask==0.11.1
+Flask-GoogleMaps==0.2.0
+happybase==0.9
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+mzgeohash==1.0.0
+thrift==0.9.3
+Werkzeug==0.11.10
+wheel==0.26.0

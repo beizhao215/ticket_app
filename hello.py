@@ -31,7 +31,7 @@ def add_numbers():
     ghash = geohash.encode(float(lat), float(lon), precision=9)
 
     # connection = get_db()
-    connection = happybase.Connection('54.172.243.191')
+    connection = happybase.Connection('52.4.80.155')
     table = connection.table('ticket')
     precision_9 = ghash  ## 2 meters
     precision_8 = ghash[:-1]  ## 20 meters
