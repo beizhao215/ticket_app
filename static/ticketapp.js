@@ -1,9 +1,9 @@
 var mymap = L.map('mapid').setView([43.6532, -79.3832], 13);
-L.tileLayer('https://api.tiles.mapbox.com/v4/beizhao215.0hn6ncjj/{z}/{x}/{y}.png?access_token={accessToken}', {
+L.tileLayer('https://api.tiles.mapbox.com/v4/mapboxid/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,
     id: 'ticketapp',
-    accessToken: 'pk.eyJ1IjoiYmVpemhhbzIxNSIsImEiOiJjaXExcXphNzMwMDI2ZnhtNHBweXYyeWxwIn0.FSltIXJBKGARuo07o0xlgQ'
+    accessToken: 'my_token'
 }).addTo(mymap);
 
 
